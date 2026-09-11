@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>هناكل إيه؟</title>
+  <meta name="theme-color" content="#c94f3e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="assets/app-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section id="splash" class="splash">
+    <div class="logo-mark"><img src="assets/app-icon.png" alt="فرخة مشوية" /></div><h1>هناكل إيه؟</h1><p>نرتّب أكل البيت بحب</p>
+  </section>
+  <main id="app" class="app hidden">
+    <header class="topbar"><button class="back hidden" id="backBtn" aria-label="رجوع">←</button><div><p class="eyebrow">مطبخي</p><h1 id="pageTitle">هناكل إيه؟</h1></div><button class="install-btn hidden" id="installBtn">تثبيت التطبيق</button><button class="settings-btn" id="settingsBtn" aria-label="رقم واتساب">💬</button><div class="mini-logo"><img src="assets/app-icon.png" alt="" /></div></header>
+    <section id="home" class="view active">
+      <p class="welcome">أهلًا بيكي، نطبخ إيه اليوم؟</p>
+      <div class="home-grid">
+        <button class="home-card food-card" data-go="foods"><span>🍲</span><b>أكلاتي</b><small>أكلات بيتك المفضلة</small></button>
+        <button class="home-card week-card" data-go="week"><span>🗓️</span><b>خطة الأسبوع</b><small>رتّبي وجبات الأسبوع</small></button>
+        <button class="home-card ramadan-card" data-go="ramadan"><span>🌙</span><b>خطة رمضان</b><small>سحور وفطار وحلو</small></button>
+        <button class="home-card guest-card" data-go="guests"><span>✨</span><b>عندي عزومة</b><small>خطة وطلبات العزومة</small></button>
+      </div>
+    </section>
+    <section id="foods" class="view"><div class="section-head"><p>أكلاتك المسجلة</p><button class="cream-btn" id="addFoodBtn">+ ضيفي أكلة</button></div><div id="foodList" class="list"></div></section>
+    <section id="week" class="view"><div class="section-head"><p>اختاري أكلة لكل يوم</p><button class="cream-btn" id="saveWeekBtn">حفظ الخطة</button></div><div id="weekGrid" class="planner"></div><button class="wide-btn" id="weekShopBtn">قائمة مشتريات الأسبوع</button></section>
+    <section id="ramadan" class="view"><div class="section-head"><p>اختاري تاريخًا من الشهر</p><input id="ramadanMonth" type="month" /></div><div id="ramadanGrid" class="calendar"></div></section>
+    <section id="guests" class="view"><div class="section-head"><p>نخطط للعزومة خطوة بخطوة</p><button class="cream-btn" id="newGuestBtn">+ عزومة جديدة</button></div><div id="guestList" class="list"></div></section>
+  </main>
+  <div id="modal" class="modal hidden"><div class="modal-card" id="modalContent"></div></div>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
+  </script>
+</body>
+</html>
